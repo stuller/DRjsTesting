@@ -11,7 +11,7 @@
 
 <body>
 <h1>
-    11
+    12
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
@@ -56,7 +56,8 @@
                         style="width:100%; -webkit-appearance: -apple-pay-button; -apple-pay-button-type: plain;"
                         class="apple-pay-button apple-pay-button-white-with-line"
                         lang="en"
-                        onclick="showApplepay()">
+                        data-appleOptions="{amount: 20, label: 'Apple Pay 2 item'}"
+                        onclick="showApplepay(this.data-appleOptions)">
                 </button>
             </div>
             <p style="display:none;text-align:center;" id="apple2-pay-not-supported">Apple Pay is not supported on
@@ -123,8 +124,8 @@
         event.updateWith(newDetails);
     });
 
-    function showApplepay(e) {
-        console.log(e);
+    function showApplepay(applepayOptions) {
+        console.log(applepayOptions);
         applepay.show();
     }
 
