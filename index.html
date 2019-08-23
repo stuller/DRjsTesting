@@ -10,7 +10,7 @@
 
 <body>
 <h1>
-    1
+    2
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
@@ -80,7 +80,7 @@
         //applepay.mount("applepay-element");
         document.getElementById('applepay-element').style.display = 'block';
         document.getElementById('applepay-element-container').style.display = 'block';
-        document.getElementbyId('applepayButton').addEventListener('click', applepay.show());
+        document.getElementById('applepayButton').addEventListener('click', applepay.show());
     } else {
         document.getElementById('apple-pay-not-supported').style.display = 'block';
     }
@@ -130,7 +130,7 @@
         //applepay1.mount("applepay1-element");
         document.getElementById('applepay1-element').style.display = 'block';
         document.getElementById('applepay1-element-container').style.display = 'block';
-        document.getElementbyId('applepayButton1').addEventListener('click', applepay1.show());
+        document.getElementById('applepayButton1').addEventListener('click', applepay1.show());
     } else {
         document.getElementById('apple1-pay-not-supported').style.display = 'block';
     }
@@ -181,7 +181,7 @@
         document.getElementById('applepay2-element').style.display = 'block';
         document.getElementById('applepay2-element-container').style.display = 'block';
 
-        document.getElementbyId('applepayButton2').addEventListener('click', applepay.show());
+        document.getElementById('applepayButton2').addEventListener('click', applepay.show());
     } else {
         document.getElementById('apple2-pay-not-supported').style.display = 'block';
     }
