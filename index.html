@@ -11,7 +11,7 @@
 
 <body>
 <h1>
-    7
+    8
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
@@ -31,10 +31,12 @@
         <div class="col-md-12 mb-3 text-center">
             Apple Pay 1 $10
             <div id="applepay1-element" class="payment-button">
-                <div id="applepayButton1" onclick="applepay.show();"  class="apple-pay-button-with-text apple-pay-button-white-with-text">
-                    <span class="text">Buy with</span>
-                    <span class="logo"></span>
-                </div>
+                <button id="applepayButton1"
+                        type="button"
+                        style="width:100%; -webkit-appearance: -apple-pay-button; -apple-pay-button-type: plain;"
+                        class="apple-pay-button apple-pay-button-white-with-line"
+                        lang="en">
+                </button>
             </div>
             <p style="display:none;text-align:center;" id="apple1-pay-not-supported">Apple Pay is not supported on
                 this
@@ -48,10 +50,12 @@
         <div class="col-md-12 mb-3 text-center">
             Apple Pay 2 $20
             <div id="applepay2-element" class="payment-button">
-                <div id="applepayButton2"  onclick="applepay.show();" class="apple-pay-button-with-text apple-pay-button-white-with-text">
-                    <span class="text">Buy with</span>
-                    <span class="logo"></span>
-                </div>
+                <button id="applepayButton2"
+                        type="button"
+                        style="width:100%; -webkit-appearance: -apple-pay-button; -apple-pay-button-type: plain;"
+                        class="apple-pay-button apple-pay-button-white-with-line"
+                        lang="en">
+                </button>
             </div>
             <p style="display:none;text-align:center;" id="apple2-pay-not-supported">Apple Pay is not supported on
                 this
