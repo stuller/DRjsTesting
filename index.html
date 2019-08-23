@@ -11,7 +11,7 @@
 
 <body>
 <h1>
-    10
+    11
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
@@ -56,7 +56,7 @@
                         style="width:100%; -webkit-appearance: -apple-pay-button; -apple-pay-button-type: plain;"
                         class="apple-pay-button apple-pay-button-white-with-line"
                         lang="en"
-                        onclick="showApplepay(e)">
+                        onclick="showApplepay()">
                 </button>
             </div>
             <p style="display:none;text-align:center;" id="apple2-pay-not-supported">Apple Pay is not supported on
@@ -72,6 +72,7 @@
 
 <script type="text/javascript" src="https://js.digitalriver.com/v1/DigitalRiver.js"></script>
 <script>
+
     var digitalriverpayments = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
 
     var applePrData = getBasePrData();
@@ -123,6 +124,7 @@
     });
 
     function showApplepay(e) {
+        console.log(e);
         applepay.show();
     }
 
