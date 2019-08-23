@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Apple Pay Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="applepay-element-container">
+            <div class="col-md-12 mb-3 text-center">
+                Apple Pay 0
+                <div id="applepay-element" class="payment-button" style="display:none"></div>
+                <p style="display:none;text-align:center;" id="apple-pay-not-supported">Apple Pay is not supported on
+                    this
+                    device.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row" id="applepay1-element-container">
+            <div class="col-md-12 mb-3 text-center">
+                Apple Pay 1
+                <div id="applepay1-element" class="payment-button" style="display:none"></div>
+                <p style="display:none;text-align:center;" id="apple1-pay-not-supported">Apple Pay is not supported on
+                    this
+                    device.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row" id="applepay2-element-container">
+            <div class="col-md-12 mb-3 text-center">
+                Apple Pay 2
+                <div id="applepay2-element" class="payment-button" style="display:none"></div>
+                <p style="display:none;text-align:center;" id="apple2-pay-not-supported">Apple Pay is not supported on
+                    this
+                    device.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <pre id="source" class="col-md-12 mb-3"></pre>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://js.digitalriver.com/v1/DigitalRiver.js"></script>
+    <script>
+        var digitalriverpayments = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
+
+        var applePrData = getBasePrData();
+        var applePayRequestData = digitalriverpayments.paymentRequest(applePrData);
+
+        var applepay = digitalriverpayments.createElement("applepay", applePayRequestData);
+		console.log(applepay);
+        if (applepay.canMakePayment()) {
+            applepay.mount("applepay-element");
+            document.getElementById('applepay-element').style.display = 'block';
+            document.getElementById('applepay-element-container').style.display = 'block';
+        } else {
+            document.getElementById('apple-pay-not-supported').style.display = 'block';
+        }
+
+        applepay.on('source', function (event) {
+            console.log("Received Event", event);
+            console.log("GOT APPLE PAY SOURCE ID");
+
+            event.complete('success');
+
+            var source = event.source;
+            document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
+        });
+
+        applepay.on('shippingaddresschange', function (event) {
+            console.log("Received Shipping Address Change Event", event);
+            var shippingAddress = event.shippingAddress;
+            console.log("Shipping Address", shippingAddress);
+
+            var newDetails = getPrUpdateObject();
+            console.log('Updating PR With', newDetails);
+            event.updateWith(newDetails);
+        });
+
+        applepay.on('cancel', function (event) {
+            console.log("Received Event", event);
+            console.log(event);
+        });
+
+        applepay.on('shippingoptionchange', function (event) {
+            console.log("Received Shipping Option Change Event", event);
+            var shippingOption = event.shippingOption;
+            console.log("Shipping Option", shippingOption);
+
+            var newDetails = getPrUpdateObject();
+            console.log('Updating PR With', newDetails);
+            event.updateWith(newDetails);
+        });
+
+
+        var digitalriverpayments1 = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
+        var applePayRequestData1 = digitalriverpayments1.paymentRequest(applePrData);
+
+        var applepay1 = digitalriverpayments1.createElement("applepay", applePayRequestData1);
+		console.log(applepay1);
+        if (applepay1.canMakePayment()) {
+            applepay1.mount("applepay1-element");
+            document.getElementById('applepay1-element').style.display = 'block';
+            document.getElementById('applepay1-element-container').style.display = 'block';
+        } else {
+            document.getElementById('apple1-pay-not-supported').style.display = 'block';
+        }
+
+        applepay1.on('source', function (event) {
+            console.log("Received Event", event);
+            console.log("GOT APPLE PAY SOURCE ID");
+
+            event.complete('success');
+
+            var source = event.source;
+            document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
+        });
+
+        applepay1.on('shippingaddresschange', function (event) {
+            console.log("Received Shipping Address Change Event", event);
+            var shippingAddress = event.shippingAddress;
+            console.log("Shipping Address", shippingAddress);
+
+            var newDetails = getPrUpdateObject();
+            console.log('Updating PR With', newDetails);
+            event.updateWith(newDetails);
+        });
+
+        applepay1.on('cancel', function (event) {
+            console.log("Received Event", event);
+            console.log(event);
+        });
+
+        applepay1.on('shippingoptionchange', function (event) {
+            console.log("Received Shipping Option Change Event", event);
+            var shippingOption = event.shippingOption;
+            console.log("Shipping Option", shippingOption);
+
+            var newDetails = getPrUpdateObject();
+            console.log('Updating PR With', newDetails);
+            event.updateWith(newDetails);
+        });
+
+
+        var digitalriverpayments2 = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
+        var applePayRequestData2 = digitalriverpayments2.paymentRequest(applePrData);
+
+        var applepay2 = digitalriverpayments2.createElement("applepay", applePayRequestData2);
+		console.log(applepay2);
+        if (applepay2.canMakePayment()) {
+            applepay2.mount("applepay2-element");
+            document.getElementById('applepay2-element').style.display = 'block';
+            document.getElementById('applepay2-element-container').style.display = 'block';
+        } else {
+            document.getElementById('apple2-pay-not-supported').style.display = 'block';
+        }
+
+        applepay2.on('source', function (event) {
+            console.log("Received Event", event);
+            console.log("GOT APPLE PAY SOURCE ID");
+
+            event.complete('success');
+
+            var source = event.source;
+            document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
+        });
+
+        applepay2.on('shippingaddresschange', function (event) {
+            console.log("Received Shipping Address Change Event", event);
+            var shippingAddress = event.shippingAddress;
+            console.log("Shipping Address", shippingAddress);
+
+            var newDetails = getPrUpdateObject();
+            console.log('Updating PR With', newDetails);
+            event.updateWith(newDetails);
+        });
+
+        applepay2.on('cancel', function (event) {
+            console.log("Received Event", event);
+            console.log(event);
+        });
+
+        applepay2.on('shippingoptionchange', function (event) {
+            console.log("Received Shipping Option Change Event", event);
+            var shippingOption = event.shippingOption;
+            console.log("Shipping Option", shippingOption);
+
+            var newDetails = getPrUpdateObject();
+            console.log('Updating PR With', newDetails);
+            event.updateWith(newDetails);
+        });
+
+        function getBasePrData() {
+            return {
+                country: "US",
+                currency: "USD",
+                total: {
+                    label: "Demo Total",
+                    amount: 300
+                },
+                displayItems: [{
+                    amount: 100,
+                    label: "Item"
+                }, {
+                    amount: 200,
+                    label: "Better Item"
+                }],
+                requestShipping: true,
+                shippingOptions: [{
+                    id: "free-shipping",
+                    label: "Free Shipping",
+                    detail: "Arrives in 5 to 7 days",
+                    amount: 0
+                }, {
+                    id: "overnight-shipping",
+                    label: "Overnight Shipping",
+                    detail: "Arrives in 5 to 7 days",
+                    amount: 1000
+                }],
+                style: {
+                    buttonType: "plain",
+                    buttonColor: "light-outline",
+                    buttonLanguage: "en"
+                },
+                waitOnClick: false
+            };
+        }
+
+        function getPrUpdateObject() {
+            return {
+                "status": "success",
+                "total": {
+                    "label": "New Total",
+                    "amount": 1020.10
+                },
+                "displayItems": [
+                    {
+                        "amount": 1000,
+                        "label": "Big Screen TV",
+                    },
+                    {
+                        "amount": 20.10,
+                        "label": "Shipping and Handling"
+                    }
+                ],
+                "shippingOptions": [
+                    {
+                        id: "free-shipping",
+                        label: "Free Shipping",
+                        detail: "Arrives in 5 to 7 days",
+                        amount: 50
+                    }, {
+                        id: "overnight-shipping",
+                        label: "Overnight Shipping",
+                        detail: "Arrives in 5 to 7 days",
+                        amount: 10,
+                        selected: true
+                    }
+                ]
+            }
+        }
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
