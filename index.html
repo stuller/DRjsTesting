@@ -11,17 +11,13 @@
 
 <body>
 <h1>
-    5
+    6
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
         <div class="col-md-12 mb-3 text-center">
             Apple Pay 0 $5
             <div id="applepay-element" class="payment-button" style="display:none">
-                <div id="applepayButton" onclick="applepay.show();" class="apple-pay-button-with-text apple-pay-button-white-with-text">
-                    <span class="text">Buy with</span>
-                    <span class="logo"></span>
-                </div>
             </div>
             <p style="display:none;text-align:center;" id="apple-pay-not-supported">Apple Pay is not supported on
                 this
@@ -78,7 +74,7 @@
     var applepay = digitalriverpayments.createElement("applepay", applePayRequestData);
     console.log(applepay.parentNode);
     if (applepay.canMakePayment()) {
-        //applepay.mount("applepay-element");
+        applepay.mount("applepay-element");
         document.getElementById('applepay-element').style.display = 'block';
         document.getElementById('applepay-element-container').style.display = 'block';
     } else {
