@@ -11,12 +11,12 @@
 
 <body>
 <h1>
-    13
+    14
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
         <div class="col-md-12 mb-3 text-center">
-            Apple Pay 0 $5
+            Apple Pay 0
             <div id="applepay-element" class="payment-button" style="display:none">
             </div>
             <p style="display:none;text-align:center;" id="apple-pay-not-supported">Apple Pay is not supported on
@@ -29,14 +29,14 @@
 
     <div class="row" id="applepay1-element-container">
         <div class="col-md-12 mb-3 text-center">
-            Apple Pay 1 $10
+            Apple Pay 1
             <div id="applepay1-element" class="payment-button">
                 <button id="applepayButton1"
                         type="button"
                         style="width:100%; -webkit-appearance: -apple-pay-button; -apple-pay-button-type: plain;"
                         class="apple-pay-button apple-pay-button-white-with-line"
                         lang="en"
-                        onclick="applepay.show()">
+                        onclick="showApplepay()">
                 </button>
             </div>
             <p style="display:none;text-align:center;" id="apple1-pay-not-supported">Apple Pay is not supported on
@@ -49,7 +49,7 @@
 
     <div class="row" id="applepay2-element-container">
         <div class="col-md-12 mb-3 text-center">
-            Apple Pay 2 $20
+            Apple Pay 2
             <div id="applepay2-element" class="payment-button">
                 <button id="applepayButton2"
                         type="button"
@@ -57,7 +57,7 @@
                         class="apple-pay-button apple-pay-button-white-with-line"
                         lang="en"
                         data-appleOptions="{amount: 20, label: 'Apple Pay 2 item'}"
-                        onclick="showApplepay(this.getAttribute[data-appleOptions])">
+                        onclick="showApplepay()">
                 </button>
             </div>
             <p style="display:none;text-align:center;" id="apple2-pay-not-supported">Apple Pay is not supported on
@@ -124,8 +124,9 @@
         event.updateWith(newDetails);
     });
 
-    function showApplepay(applepayOptions) {
-        console.log(applepayOptions);
+    function showApplepay() {
+        //do your stuff to update applepay prices
+        applepay.update(getPrUpdateObject());
         applepay.show();
     }
 
