@@ -11,7 +11,7 @@
 
 <body>
 <h1>
-    4
+    5
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
@@ -35,7 +35,7 @@
         <div class="col-md-12 mb-3 text-center">
             Apple Pay 1 $10
             <div id="applepay1-element" class="payment-button" style="display:none">
-                <div id="applepayButton1" onclick="applepay1.show();"  class="apple-pay-button-with-text apple-pay-button-white-with-text">
+                <div id="applepayButton1" onclick="applepay.show();"  class="apple-pay-button-with-text apple-pay-button-white-with-text">
                     <span class="text">Buy with</span>
                     <span class="logo"></span>
                 </div>
@@ -52,7 +52,7 @@
         <div class="col-md-12 mb-3 text-center">
             Apple Pay 2 $20
             <div id="applepay2-element" class="payment-button" style="display:none">
-                <div id="applepayButton2"  onclick="applepay2.show();" class="apple-pay-button-with-text apple-pay-button-white-with-text">
+                <div id="applepayButton2"  onclick="applepay.show();" class="apple-pay-button-with-text apple-pay-button-white-with-text">
                     <span class="text">Buy with</span>
                     <span class="logo"></span>
                 </div>
@@ -121,103 +121,103 @@
     });
 
 
-    var digitalriverpayments1 = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
-    var applePayRequestData1 = digitalriverpayments1.paymentRequest(applePrData);
-
-    var applepay1 = digitalriverpayments1.createElement("applepay", applePayRequestData1);
-    console.log(applepay.parentNode);
-    if (applepay1.canMakePayment()) {
-        //applepay1.mount("applepay1-element");
-        document.getElementById('applepay1-element').style.display = 'block';
-        document.getElementById('applepay1-element-container').style.display = 'block';
-    } else {
-        document.getElementById('apple1-pay-not-supported').style.display = 'block';
-    }
-
-    applepay1.on('source', function (event) {
-        console.log("Received Event", event);
-        console.log("GOT APPLE PAY SOURCE ID");
-
-        event.complete('success');
-
-        var source = event.source;
-        document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
-    });
-
-    applepay1.on('shippingaddresschange', function (event) {
-        console.log("Received Shipping Address Change Event", event);
-        var shippingAddress = event.shippingAddress;
-        console.log("Shipping Address", shippingAddress);
-
-        var newDetails = getPrUpdateObject();
-        console.log('Updating PR With', newDetails);
-        event.updateWith(newDetails);
-    });
-
-    applepay1.on('cancel', function (event) {
-        console.log("Received Event", event);
-        console.log(event);
-    });
-
-    applepay1.on('shippingoptionchange', function (event) {
-        console.log("Received Shipping Option Change Event", event);
-        var shippingOption = event.shippingOption;
-        console.log("Shipping Option", shippingOption);
-
-        var newDetails = getPrUpdateObject();
-        console.log('Updating PR With', newDetails);
-        event.updateWith(newDetails);
-    });
-
-
-    var digitalriverpayments2 = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
-    var applePayRequestData2 = digitalriverpayments2.paymentRequest(applePrData);
-
-    var applepay2 = digitalriverpayments2.createElement("applepay", applePayRequestData2);
-    console.log(applepay2);
-    if (applepay2.canMakePayment()) {
-        //applepay2.mount("applepay2-element");
-        document.getElementById('applepay2-element').style.display = 'block';
-        document.getElementById('applepay2-element-container').style.display = 'block';
-
-    } else {
-        document.getElementById('apple2-pay-not-supported').style.display = 'block';
-    }
-
-    applepay2.on('source', function (event) {
-        console.log("Received Event", event);
-        console.log("GOT APPLE PAY SOURCE ID");
-
-        event.complete('success');
-
-        var source = event.source;
-        document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
-    });
-
-    applepay2.on('shippingaddresschange', function (event) {
-        console.log("Received Shipping Address Change Event", event);
-        var shippingAddress = event.shippingAddress;
-        console.log("Shipping Address", shippingAddress);
-
-        var newDetails = getPrUpdateObject();
-        console.log('Updating PR With', newDetails);
-        event.updateWith(newDetails);
-    });
-
-    applepay2.on('cancel', function (event) {
-        console.log("Received Event", event);
-        console.log(event);
-    });
-
-    applepay2.on('shippingoptionchange', function (event) {
-        console.log("Received Shipping Option Change Event", event);
-        var shippingOption = event.shippingOption;
-        console.log("Shipping Option", shippingOption);
-
-        var newDetails = getPrUpdateObject();
-        console.log('Updating PR With', newDetails);
-        event.updateWith(newDetails);
-    });
+    // var digitalriverpayments1 = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
+    // var applePayRequestData1 = digitalriverpayments1.paymentRequest(applePrData);
+    //
+    // var applepay1 = digitalriverpayments1.createElement("applepay", applePayRequestData1);
+    // console.log(applepay.parentNode);
+    // if (applepay1.canMakePayment()) {
+    //     //applepay1.mount("applepay1-element");
+    //     document.getElementById('applepay1-element').style.display = 'block';
+    //     document.getElementById('applepay1-element-container').style.display = 'block';
+    // } else {
+    //     document.getElementById('apple1-pay-not-supported').style.display = 'block';
+    // }
+    //
+    // applepay1.on('source', function (event) {
+    //     console.log("Received Event", event);
+    //     console.log("GOT APPLE PAY SOURCE ID");
+    //
+    //     event.complete('success');
+    //
+    //     var source = event.source;
+    //     document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
+    // });
+    //
+    // applepay1.on('shippingaddresschange', function (event) {
+    //     console.log("Received Shipping Address Change Event", event);
+    //     var shippingAddress = event.shippingAddress;
+    //     console.log("Shipping Address", shippingAddress);
+    //
+    //     var newDetails = getPrUpdateObject();
+    //     console.log('Updating PR With', newDetails);
+    //     event.updateWith(newDetails);
+    // });
+    //
+    // applepay1.on('cancel', function (event) {
+    //     console.log("Received Event", event);
+    //     console.log(event);
+    // });
+    //
+    // applepay1.on('shippingoptionchange', function (event) {
+    //     console.log("Received Shipping Option Change Event", event);
+    //     var shippingOption = event.shippingOption;
+    //     console.log("Shipping Option", shippingOption);
+    //
+    //     var newDetails = getPrUpdateObject();
+    //     console.log('Updating PR With', newDetails);
+    //     event.updateWith(newDetails);
+    // });
+    //
+    //
+    // var digitalriverpayments2 = new DigitalRiver('pk_hc_8e3f70c75f314c46855e840ba7a8baab');
+    // var applePayRequestData2 = digitalriverpayments2.paymentRequest(applePrData);
+    //
+    // var applepay2 = digitalriverpayments2.createElement("applepay", applePayRequestData2);
+    // console.log(applepay2);
+    // if (applepay2.canMakePayment()) {
+    //     //applepay2.mount("applepay2-element");
+    //     document.getElementById('applepay2-element').style.display = 'block';
+    //     document.getElementById('applepay2-element-container').style.display = 'block';
+    //
+    // } else {
+    //     document.getElementById('apple2-pay-not-supported').style.display = 'block';
+    // }
+    //
+    // applepay2.on('source', function (event) {
+    //     console.log("Received Event", event);
+    //     console.log("GOT APPLE PAY SOURCE ID");
+    //
+    //     event.complete('success');
+    //
+    //     var source = event.source;
+    //     document.getElementById('source').innerHTML = JSON.stringify(event, null, 4);
+    // });
+    //
+    // applepay2.on('shippingaddresschange', function (event) {
+    //     console.log("Received Shipping Address Change Event", event);
+    //     var shippingAddress = event.shippingAddress;
+    //     console.log("Shipping Address", shippingAddress);
+    //
+    //     var newDetails = getPrUpdateObject();
+    //     console.log('Updating PR With', newDetails);
+    //     event.updateWith(newDetails);
+    // });
+    //
+    // applepay2.on('cancel', function (event) {
+    //     console.log("Received Event", event);
+    //     console.log(event);
+    // });
+    //
+    // applepay2.on('shippingoptionchange', function (event) {
+    //     console.log("Received Shipping Option Change Event", event);
+    //     var shippingOption = event.shippingOption;
+    //     console.log("Shipping Option", shippingOption);
+    //
+    //     var newDetails = getPrUpdateObject();
+    //     console.log('Updating PR With', newDetails);
+    //     event.updateWith(newDetails);
+    // });
 
     function getBasePrData() {
         return {
