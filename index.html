@@ -10,7 +10,7 @@
 
 <body>
 <h1>
-    6
+    7
 </h1>
     <div class="container">
         <div class="row" id="applepay-element-container">
@@ -60,8 +60,14 @@
         var applePayRequestData = digitalriverpayments.paymentRequest(applePrData);
 
         var applepay = digitalriverpayments.createElement("applepay", applePayRequestData);
-		console.log(applepay);
-
+		console.log(applepay.parentNode);
+        if (applepay.canMakePayment()) {
+            //applepay.mount("applepay-element");
+            document.getElementById('applepay-element').style.display = 'block';
+            document.getElementById('applepay-element-container').style.display = 'block';
+        } else {
+            document.getElementById('apple-pay-not-supported').style.display = 'block';
+        }
 
         applepay.on('source', function (event) {
             console.log("Received Event", event);
@@ -103,7 +109,7 @@
         var applePayRequestData1 = digitalriverpayments1.paymentRequest(applePrData);
 
         var applepay1 = digitalriverpayments1.createElement("applepay", applePayRequestData1);
-		console.log(applepay1);
+        console.log(applepay.parentNode);
         // if (applepay1.canMakePayment()) {
         //     applepay1.mount("applepay1-element");
         //     document.getElementById('applepay1-element').style.display = 'block';
@@ -264,17 +270,6 @@
                     }
                 ]
             }
-        }
-
-
-
-
-        if (applepay.canMakePayment()) {
-            applepay.mount("applepay-element");
-            document.getElementById('applepay-element').style.display = 'block';
-            document.getElementById('applepay-element-container').style.display = 'block';
-        } else {
-            document.getElementById('apple-pay-not-supported').style.display = 'block';
         }
     </script>
 
