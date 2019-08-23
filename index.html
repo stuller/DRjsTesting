@@ -11,7 +11,7 @@
 
 <body>
 <h1>
-    12
+    13
 </h1>
 <div class="container">
     <div class="row" id="applepay-element-container">
@@ -57,7 +57,7 @@
                         class="apple-pay-button apple-pay-button-white-with-line"
                         lang="en"
                         data-appleOptions="{amount: 20, label: 'Apple Pay 2 item'}"
-                        onclick="showApplepay(this.data-appleOptions)">
+                        onclick="showApplepay(this.getAttribute[data-appleOptions])">
                 </button>
             </div>
             <p style="display:none;text-align:center;" id="apple2-pay-not-supported">Apple Pay is not supported on
@@ -158,7 +158,7 @@
                 buttonColor: "light-outline",
                 buttonLanguage: "en"
             },
-            waitOnClick: false
+            waitOnClick: true
         };
     }
 
